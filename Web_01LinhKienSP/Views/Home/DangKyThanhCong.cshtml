@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DangKyThanhCong";
+    Layout = "~/Views/Shared/_LayoutDangNhap.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="w-50 mx-auto text-center alert alert-success" role="alert">
+        <h2 class="alert-heading">Chúc mừng!</h2>
+        <p>Bạn đã đăng ký tài khoản thành công.</p>
+        <hr>
+        <p class="mb-0">Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+        <a href="@Url.Action("DangNhap", "Home")" class="btn btn-primary mt-3">Quay về trang đăng nhập</a>
+    </div>
+</div>
+

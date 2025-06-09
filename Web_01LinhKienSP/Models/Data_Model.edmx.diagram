@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94c8619610654a35a5f81647a0459d2d" Name="Diagram1">
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.GioHang" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.LoaiSP" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.NHACUNGCAP" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.SanPham" Width="1.5" PointX="8" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.TaiKhoan" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.TaiKhoan_Admin" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.ThongTin_GioHang" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.Thongtin_SP_Nhap" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_IDGIOHANG_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_IDLOAISP" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_nhacungcap" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_idTaiKhoan_admin" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_idTKADMIN_SP_Nhap" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

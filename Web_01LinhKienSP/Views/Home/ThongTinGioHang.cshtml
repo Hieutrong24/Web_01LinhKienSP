@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinGioHang";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+
+
+}
+@Html.AntiForgeryToken()
+@section scripts {
+    <script>
+        const sanPham_GioHang = @Html.Raw(Json.Encode(Model));
+    </script>
+    <script src="~/Scripts/MyYourJavaScript.js"></script>
+}
+
+
+
+@if (Session["Email"] != null)
+{
+    <div class="row row-cols-2">
+        <div class=" col-4 border"  >
+            <div class="col-12 ">
+                
+            </div>
+            <div class="mt-5 border bg-warning">
+                
+            </div>
+        </div>
+        <div id="container" class=" col-8">
+
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-center">
+        <a href="/Home/DangNhap" class="btn btn-primary">Đăng nhập</a>
+    </p>
+
+}
+
+
