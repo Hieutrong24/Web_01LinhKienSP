@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -48,15 +48,14 @@ namespace Web_01LinhKienSP.Controllers
             if (ModelState.IsValid)
             {
                 using (var db = new QL_LinhKienDienTuEntities5())
-                {
-                    // So sánh mật khẩu (giữ nguyên nếu không mã hóa)
+                { 
                     var taikhoan = db.TaiKhoan.FirstOrDefault(
                         x => x.EMAIL == model.EMAIL && x.PASSWORD == model.PASSWORD
                     );
 
                     if (taikhoan != null)
                     {
-                        // Chỉ lưu thông tin cần thiết vào Session
+                        
                         Session["Email"] = taikhoan.EMAIL;
                         Session["HoTen"] = taikhoan.HOTEN;
 
@@ -196,7 +195,7 @@ namespace Web_01LinhKienSP.Controllers
         [HttpPost]
         public ActionResult ThongTinGioHang(ChiTietGioHangModel item) // Thay đổi từ List sang một item duy nhất
         {
-            // Kiểm tra xem item có null không
+            
             if (item == null)
             {
                 return new HttpStatusCodeResult(400, "Không có dữ liệu sản phẩm để thêm vào giỏ hàng.");
@@ -207,48 +206,46 @@ namespace Web_01LinhKienSP.Controllers
                 var userEmail = (string)Session["Email"];
                 if (userEmail == null)
                 {
-                    // Nếu người dùng chưa đăng nhập, bạn có thể chuyển hướng đến trang đăng nhập
-                    // hoặc trả về lỗi 401 để JavaScript xử lý.
+                    
                     return new HttpStatusCodeResult(401, "Người dùng chưa đăng nhập.");
                 }
 
                 var gioHang = db.GioHang.FirstOrDefault(gh => gh.EMAILTAIKHOAN == userEmail);
 
-                // Nếu người dùng đã đăng nhập nhưng chưa có giỏ hàng, tạo mới một giỏ hàng cho họ
+                
                 if (gioHang == null)
                 {
-                    // Bạn cần tạo một record GioHang mới cho người dùng này
-                    // Ví dụ:
+                    
                     gioHang = new GioHang
                     {
                         EMAILTAIKHOAN = userEmail,
-                        NGAYTAO = DateTime.Now // Cần thêm thuộc tính NGAYTAO trong model GioHang của bạn
+                        NGAYTAO = DateTime.Now 
                     };
                     db.GioHang.Add(gioHang);
-                    db.SaveChanges(); // Lưu để có ID cho gioHang mới
+                    db.SaveChanges(); 
                 }
 
                 // Kiểm tra xem sản phẩm đã có trong giỏ hàng này chưa
                 var chiTietHienCo = db.ThongTin_GioHang.FirstOrDefault(ct =>
-                    ct.IDGIOHANG == gioHang.ID && ct.TENSP == item.TENSP // Giả sử TENSP là unique hoặc cần IDSP
+                    ct.IDGIOHANG == gioHang.ID && ct.TENSP == item.TENSP  
                 );
 
                 if (chiTietHienCo != null)
                 {
-                    // Nếu sản phẩm đã có, chỉ cập nhật số lượng
-                    chiTietHienCo.SOLUONG += item.SOLUONG; // Tăng số lượng
+                     
+                    chiTietHienCo.SOLUONG += item.SOLUONG;  
                 }
                 else
                 {
-                    // Nếu sản phẩm chưa có, thêm mới chi tiết giỏ hàng
+                     
                     var chiTietMoi = new ThongTin_GioHang
                     {
                         IDGIOHANG = gioHang.ID,
                         TENSP = item.TENSP,
                         IMG = item.IMG,
-                        GIAGOC = (float)(item.GIAGOC ?? 0.0), // Chuyển đổi double? sang float
-                        GIAHT = (float)(item.GIAHT ?? 0.0),   // Chuyển đổi double? sang float
-                        SOLUONG = item.SOLUONG // Lấy số lượng từ item gửi lên
+                        GIAGOC = (float)(item.GIAGOC ?? 0.0),  
+                        GIAHT = (float)(item.GIAHT ?? 0.0),    
+                        SOLUONG = item.SOLUONG  
                     };
                     db.ThongTin_GioHang.Add(chiTietMoi);
                 }
