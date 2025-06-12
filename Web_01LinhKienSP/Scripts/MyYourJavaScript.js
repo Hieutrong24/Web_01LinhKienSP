@@ -1,4 +1,4 @@
-﻿
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.className = 'card h-100 d-flex flex-column';
 
             const img = document.createElement('img');
-            img.alt = sp.TenSP || 'Product image'; // Dùng TenSP cho alt
+            img.alt = sp.TenSP || 'Product image';  
             img.src = sp.Img;
             img.className = 'card-img-top';
 
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title.innerText = sp.TenSP;
 
             const price = document.createElement('p');
-            price.className = 'card-text text-danger mb-1'; // Đổi về text-danger cho phù hợp với các phần khác
+            price.className = 'card-text text-danger mb-1';  
             price.innerText = sp.GiaHT;
 
             const original = document.createElement('p');
@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     // gio hang 
     if (typeof sanPham_GioHang !== 'undefined' && sanPham_GioHang && sanPham_GioHang.length > 0) {
-        const container = document.getElementById('container'); // Đảm bảo bạn có <div id="container"></div>
+        const container = document.getElementById('container'); 
 
         sanPham_GioHang.forEach((sp) => {
             const card = document.createElement('div');
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function sendToCardSever(sp) { // HÀM NÀY PHẢI NHẬN 'sp' LÀ THAM SỐ
+    function sendToCardSever(sp) { 
 
         fetch('/Home/ThongTinGioHang', {
             method: 'POST',
@@ -478,13 +478,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                // Gửi thông tin của SẢN PHẨM ĐƯỢC CLICK
+               
                 TENSP: sp.TenSP,
-                IMG: sp.Img,     // Đảm bảo tên thuộc tính khớp với DTO: IMG chứ không phải Img
+                IMG: sp.Img,     
                 GIAGOC: sp.GiaGoc,
                 GIAHT: sp.GiaHT,
-                SOLUONG: 1, // Giả sử khi click "Thêm vào giỏ" là thêm 1 sản phẩm
-                // ID: sp.ID // Nếu bạn muốn truyền ID sản phẩm thay vì TENSP để kiểm tra trùng lặp
+                SOLUONG: 1, 
+                
             })
         })
             .then(response => {
@@ -492,12 +492,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     showCustomMessage("Đã thêm sản phẩm vào giỏ hàng thành công!", true);
                 } else if (response.status === 401) {
                     showCustomMessage("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.", false);
-                    // Có thể chuyển hướng đến trang đăng nhập sau 2 giây
-                    // setTimeout(() => { window.location.href = '/Home/DangNhap'; }, 2000);
+                    
+                     setTimeout(() => { window.location.href = '/Home/DangNhap'; }, 2000);
                 } else {
                     showCustomMessage("Lỗi khi thêm sản phẩm vào giỏ hàng.", false);
                 }
-                return response.text(); // Đọc response text để debug nếu có lỗi
+                return response.text(); /
             })
             .then(data => {
                 console.log('Server Response:', data); // In phản hồi từ server
