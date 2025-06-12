@@ -4,7 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_LinhKienDienTuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_LinhKienDienTuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChiTietDanhMuc">
+          <Key>
+            <PropertyRef Name="MaChiTiet" />
+          </Key>
+          <Property Name="MaChiTiet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDanhMuc" Type="int" Nullable="false" />
+          <Property Name="TenChiTiet" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="MaDanhMuc" />
+          </Key>
+          <Property Name="MaDanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="GioHang">
           <Key>
             <PropertyRef Name="ID" />
@@ -38,6 +53,7 @@
           <Property Name="GIAHT" Type="float" />
           <Property Name="IMG" Type="varchar(max)" />
           <Property Name="IDLOAISP" Type="int" />
+          <Property Name="MaChiTiet" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -144,6 +160,30 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_MaChiTiet">
+          <End Role="ChiTietDanhMuc" Type="Self.ChiTietDanhMuc" Multiplicity="0..1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiTietDanhMuc">
+              <PropertyRef Name="MaChiTiet" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaChiTiet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_MaDanhMuc">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
+          <End Role="ChiTietDanhMuc" Type="Self.ChiTietDanhMuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="MaDanhMuc" />
+            </Principal>
+            <Dependent Role="ChiTietDanhMuc">
+              <PropertyRef Name="MaDanhMuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fk_nhacungcap">
           <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
           <End Role="Thongtin_SP_Nhap" Type="Self.Thongtin_SP_Nhap" Multiplicity="*" />
@@ -157,6 +197,8 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="QL_LinhKienDienTuModelStoreContainer">
+          <EntitySet Name="ChiTietDanhMuc" EntityType="Self.ChiTietDanhMuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiSP" EntityType="Self.LoaiSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="dbo" store:Type="Tables" />
@@ -182,13 +224,20 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
             <End Role="TaiKhoan_Admin" EntitySet="TaiKhoan_Admin" />
             <End Role="Thongtin_SP_Nhap" EntitySet="Thongtin_SP_Nhap" />
           </AssociationSet>
+          <AssociationSet Name="Fk_MaChiTiet" Association="Self.Fk_MaChiTiet">
+            <End Role="ChiTietDanhMuc" EntitySet="ChiTietDanhMuc" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_MaDanhMuc" Association="Self.Fk_MaDanhMuc">
+            <End Role="DanhMuc" EntitySet="DanhMuc" />
+            <End Role="ChiTietDanhMuc" EntitySet="ChiTietDanhMuc" />
+          </AssociationSet>
           <AssociationSet Name="Fk_nhacungcap" Association="Self.Fk_nhacungcap">
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
             <End Role="Thongtin_SP_Nhap" EntitySet="Thongtin_SP_Nhap" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_LinhKienDienTuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -229,6 +278,8 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
           <Property Name="IMG" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IDLOAISP" Type="Int32" />
           <NavigationProperty Name="LoaiSP" Relationship="Self.Fk_IDLOAISP" FromRole="SanPham" ToRole="LoaiSP" />
+          <Property Name="MaChiTiet" Type="Int32" />
+          <NavigationProperty Name="ChiTietDanhMuc" Relationship="QL_LinhKienDienTuModel.Fk_MaChiTiet" FromRole="SanPham" ToRole="ChiTietDanhMuc" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -380,7 +431,59 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
             <End Role="TaiKhoan_Admin" EntitySet="TaiKhoan_Admin" />
             <End Role="Thongtin_SP_Nhap" EntitySet="Thongtin_SP_Nhap" />
           </AssociationSet>
+          <EntitySet Name="ChiTietDanhMuc" EntityType="QL_LinhKienDienTuModel.ChiTietDanhMuc" />
+          <EntitySet Name="DanhMuc" EntityType="QL_LinhKienDienTuModel.DanhMuc" />
+          <AssociationSet Name="Fk_MaChiTiet" Association="QL_LinhKienDienTuModel.Fk_MaChiTiet">
+            <End Role="ChiTietDanhMuc" EntitySet="ChiTietDanhMuc" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_MaDanhMuc" Association="QL_LinhKienDienTuModel.Fk_MaDanhMuc">
+            <End Role="DanhMuc" EntitySet="DanhMuc" />
+            <End Role="ChiTietDanhMuc" EntitySet="ChiTietDanhMuc" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ChiTietDanhMuc">
+          <Key>
+            <PropertyRef Name="MaChiTiet" />
+          </Key>
+          <Property Name="MaChiTiet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDanhMuc" Type="Int32" Nullable="false" />
+          <Property Name="TenChiTiet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SanPham" Relationship="QL_LinhKienDienTuModel.Fk_MaChiTiet" FromRole="ChiTietDanhMuc" ToRole="SanPham" />
+          <NavigationProperty Name="DanhMuc" Relationship="QL_LinhKienDienTuModel.Fk_MaDanhMuc" FromRole="ChiTietDanhMuc" ToRole="DanhMuc" />
+        </EntityType>
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="MaDanhMuc" />
+          </Key>
+          <Property Name="MaDanhMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDanhMuc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiTietDanhMuc" Relationship="QL_LinhKienDienTuModel.Fk_MaDanhMuc" FromRole="DanhMuc" ToRole="ChiTietDanhMuc" />
+        </EntityType>
+        <Association Name="Fk_MaChiTiet">
+          <End Type="QL_LinhKienDienTuModel.ChiTietDanhMuc" Role="ChiTietDanhMuc" Multiplicity="0..1" />
+          <End Type="QL_LinhKienDienTuModel.SanPham" Role="SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiTietDanhMuc">
+              <PropertyRef Name="MaChiTiet" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaChiTiet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_MaDanhMuc">
+          <End Type="QL_LinhKienDienTuModel.DanhMuc" Role="DanhMuc" Multiplicity="1" />
+          <End Type="QL_LinhKienDienTuModel.ChiTietDanhMuc" Role="ChiTietDanhMuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="MaDanhMuc" />
+            </Principal>
+            <Dependent Role="ChiTietDanhMuc">
+              <PropertyRef Name="MaDanhMuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -416,6 +519,7 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
           <EntitySetMapping Name="SanPham">
             <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />
                 <ScalarProperty Name="GIAGOC" ColumnName="GIAGOC" />
@@ -481,6 +585,23 @@ warning 6035: The relationship 'Fk_GIOHANG_TAIKHOAN' has columns that are not pa
                 <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
                 <ScalarProperty Name="IDNHACUNGCAP" ColumnName="IDNHACUNGCAP" />
                 <ScalarProperty Name="IDTAIKHOAN_ADMIN" ColumnName="IDTAIKHOAN_ADMIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietDanhMuc">
+            <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.ChiTietDanhMuc">
+              <MappingFragment StoreEntitySet="ChiTietDanhMuc">
+                <ScalarProperty Name="TenChiTiet" ColumnName="TenChiTiet" />
+                <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+                <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DanhMuc">
+            <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.DanhMuc">
+              <MappingFragment StoreEntitySet="DanhMuc">
+                <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+                <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

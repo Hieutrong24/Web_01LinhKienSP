@@ -20,7 +20,9 @@ namespace Web_01LinhKienSP.Models
         public Nullable<double> GIAHT { get; set; }
         public string IMG { get; set; }
         public Nullable<int> IDLOAISP { get; set; }
+        public Nullable<int> MaChiTiet { get; set; }
     
         public virtual LoaiSP LoaiSP { get; set; }
+        public virtual ChiTietDanhMuc ChiTietDanhMuc { get; set; }
     }
 }

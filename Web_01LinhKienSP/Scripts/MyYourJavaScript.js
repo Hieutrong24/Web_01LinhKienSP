@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.info("Không tìm thấy các phần tử .slide hoặc .dot. Chức năng slideshow sẽ không hoạt động trên trang này.");
     }
+    //Tao menu
+
 
     function addToCart(sp) {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];

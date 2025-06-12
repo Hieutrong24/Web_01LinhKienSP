@@ -24,11 +24,10 @@ namespace Web_01LinhKienSP.Controllers
                     Img = sp.IMG
                 }).ToList();
 
+               
                 return View(dsSanPham);
             }
         }
-
-
 
         public ActionResult Introduce()
         {

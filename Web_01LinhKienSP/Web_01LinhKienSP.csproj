@@ -183,11 +183,20 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DTO\ChiTietDanhMuc_Model.cs" />
     <Compile Include="DTO\ChiTietGioHangModel.cs" />
+    <Compile Include="DTO\DanhMuc_Model.cs" />
     <Compile Include="DTO\GioHangModel.cs" />
+    <Compile Include="DTO\HomeViewModel.cs" />
     <Compile Include="DTO\SanPhamModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDanhMuc.cs">
+      <DependentUpon>Data_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMuc.cs">
+      <DependentUpon>Data_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data_Model.Context.cs">
       <AutoGen>True</AutoGen>

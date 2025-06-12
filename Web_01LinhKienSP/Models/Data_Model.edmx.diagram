@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="94c8619610654a35a5f81647a0459d2d" Name="Diagram1">
+      <Diagram DiagramId="94c8619610654a35a5f81647a0459d2d" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.GioHang" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.LoaiSP" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.NHACUNGCAP" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.SanPham" Width="1.5" PointX="8" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.TaiKhoan" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.TaiKhoan_Admin" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QL_LinhKienDienTuModel.ThongTin_GioHang" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
@@ -19,6 +19,10 @@
         <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_nhacungcap" ManuallyRouted="false" />
         <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_idTaiKhoan_admin" ManuallyRouted="false" />
         <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_idTKADMIN_SP_Nhap" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.ChiTietDanhMuc" Width="1.5" PointX="5.75" PointY="11" />
+        <EntityTypeShape EntityType="QL_LinhKienDienTuModel.DanhMuc" Width="1.5" PointX="3.5" PointY="11.25" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_MaChiTiet" />
+        <AssociationConnector Association="QL_LinhKienDienTuModel.Fk_MaDanhMuc" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

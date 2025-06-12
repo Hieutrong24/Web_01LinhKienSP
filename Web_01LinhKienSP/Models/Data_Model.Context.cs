@@ -34,5 +34,7 @@ namespace Web_01LinhKienSP.Models
         public virtual DbSet<TaiKhoan_Admin> TaiKhoan_Admin { get; set; }
         public virtual DbSet<ThongTin_GioHang> ThongTin_GioHang { get; set; }
         public virtual DbSet<Thongtin_SP_Nhap> Thongtin_SP_Nhap { get; set; }
+        public virtual DbSet<ChiTietDanhMuc> ChiTietDanhMuc { get; set; }
+        public virtual DbSet<DanhMuc> DanhMuc { get; set; }
     }
 }
