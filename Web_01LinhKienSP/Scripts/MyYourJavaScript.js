@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Logic cho Slideshow (Carousel)
-    let slideIndex = 0; 
+    let slideIndex = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             slideIndex = index;
             slides.forEach((slide, i) => {
                 slide.classList.remove('active-slide');
-                if (dots[i]) { 
+                if (dots[i]) {
                     dots[i].classList.remove('active');
                 }
             });
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (dataContainer && paginationContainer) { // Chỉ chạy nếu có container cho phần này
             // Tạo các items từ sanPhamData
-            const items = sanPhamData.slice(0,16).map((sp) => {
+            const items = sanPhamData.slice(0, 16).map((sp) => {
                 const col = document.createElement('div');
                 col.className = 'col-3 mb-4';
 
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.className = 'card h-100 d-flex flex-column';
 
             const img = document.createElement('img');
-            img.alt = sp.TenSP || 'Product image';  
+            img.alt = sp.TenSP || 'Product image';
             img.src = sp.Img;
             img.className = 'card-img-top';
 
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
             title.innerText = sp.TenSP;
 
             const price = document.createElement('p');
-            price.className = 'card-text text-danger mb-1';  
+            price.className = 'card-text text-danger mb-1';
             price.innerText = sp.GiaHT;
 
             const original = document.createElement('p');
@@ -346,23 +346,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         displayItemsToWrapper(items3, "Intel"); // Sử dụng hàm chung
         displayItemsToWrapper(items3, "ryzen");
-       
+
     } else {
         console.info("Biến sanPham_Intel_Data không được định nghĩa hoặc rỗng trên trang Intel_core.");
     }
-    // gio hang 
+
+    //==========giohang
     if (typeof sanPham_GioHang !== 'undefined' && sanPham_GioHang && sanPham_GioHang.length > 0) {
-        const container = document.getElementById('container'); 
+        const container = document.getElementById('container');
 
         sanPham_GioHang.forEach((sp) => {
             const card = document.createElement('div');
-            card.className = 'card mb-3';
+            card.className = 'card mb-3 bg-light';
             card.style.maxWidth = '100%';
 
             const row = document.createElement('div');
             row.className = 'row g-0';
 
-            // Hình ảnh bên trái
+            
             const colImg = document.createElement('div');
             colImg.className = 'col-md-3 d-flex align-items-center justify-content-center';
             const img = document.createElement('img');
@@ -371,34 +372,31 @@ document.addEventListener('DOMContentLoaded', function () {
             img.style.maxHeight = '100px';
             colImg.appendChild(img);
 
-            // Thông tin sản phẩm bên phải
+           
             const colBody = document.createElement('div');
-            colBody.className = 'col-md-9';
+            colBody.className = 'col-md-6';
+
             const body = document.createElement('div');
             body.className = 'card-body';
 
-            // Tên sản phẩm
             const title = document.createElement('h5');
             title.className = 'card-title';
             title.innerText = sp.TENSP;
 
-            // Giá hiện tại
-            const giaHt = document.createElement('p');
-            giaHt.className = 'card-text mb-1';
-            giaHt.innerHTML = `<strong>Giá hiện tại:</strong> ${sp.GIAHT.toLocaleString()} ₫`;
+            const giaHT = document.createElement('p');
+            giaHT.className = 'cart-text mb-1';
+            giaHT.innerHTML = `<strong>Giá hiện tại:</strong> ${sp.GIAHT.toLocaleString()} ₫`;
 
-            // Giá gốc
             const giaGoc = document.createElement('p');
             giaGoc.className = 'card-text';
             giaGoc.innerHTML = `<small class="text-muted"><s>Giá gốc: ${sp.GIAGOC.toLocaleString()} ₫</s></small>`;
 
-            // Vùng tăng/giảm số lượng
             const qtyControls = document.createElement('div');
-            qtyControls.className = 'd-flex justify-content-start align-items-center mt-2';
+            qtyControls.className = 'd-flex align-items-center mt-2';
 
             const btnMinus = document.createElement('button');
             btnMinus.className = 'btn btn-outline-secondary btn-sm';
-            btnMinus.innerText = '−';
+            btnMinus.innerText = '-';
             btnMinus.onclick = function () {
                 const input = document.getElementById(`qty_${sp.ID}`);
                 let current = parseInt(input.value);
@@ -428,29 +426,113 @@ document.addEventListener('DOMContentLoaded', function () {
             qtyControls.appendChild(inputQty);
             qtyControls.appendChild(btnPlus);
 
-            // Thêm tất cả phần tử con vào body
             body.appendChild(title);
-            body.appendChild(giaHt);
+            body.appendChild(giaHT);
             body.appendChild(giaGoc);
             body.appendChild(qtyControls);
-
             colBody.appendChild(body);
+
+           
+            const divCheck = document.createElement('div');
+            divCheck.className = 'col-md-3 d-flex align-items-center justify-content-center';
+
+            const inputCheck = document.createElement('input');
+            inputCheck.type = 'checkbox';
+            inputCheck.className = 'form-check-input chon-sanpham';
+            inputCheck.style.width = '20px';
+            inputCheck.style.height = '20px';
+            inputCheck.style.border = '2px solid blue';
+            inputCheck.dataset.idgiohang = sp.ID;
+            inputCheck.dataset.giaht = sp.GIAHT;
+            inputCheck.dataset.soluong = sp.SOLUONG;
+ 
+
+            divCheck.appendChild(inputCheck);
+
+            
             row.appendChild(colImg);
             row.appendChild(colBody);
+            row.appendChild(divCheck);
+
             card.appendChild(row);
             container.appendChild(card);
         });
-        displayItemsToWrapper(items3, "container");
     }
-    
 
-    
-    
+    function xuLyDatHang() {
+        const checkboxes = document.querySelectorAll('.chon-sanpham');
+        const tongTienElement = document.getElementById('tongTien');
+        const btnDatHang = document.getElementById('btnDatHang');
+
+        if (!checkboxes.length || !tongTienElement || !btnDatHang) {
+            console.error("Không tìm thấy phần tử cần thiết để xử lý đặt hàng.");
+            return;
+        }
+
+        function tinhTongTien() {
+            let tong = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    const gia = parseFloat(cb.dataset.giaht);
+                    const soLuong = parseInt(cb.dataset.soluong);
+                    tong += gia * soLuong;
+                }
+            });
+            tongTienElement.textContent = `Tổng tiền: ${tong.toLocaleString()} VNĐ`;
+            return tong;
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', tinhTongTien);
+        });
+
+        btnDatHang.addEventListener('click', function (e) {
+            const selected = [];
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    selected.push({
+                        Id_TTGioHang: cb.dataset.idgiohang,
+                        SoLuong: cb.dataset.soluong,
+                        NgayMua: new Date().toISOString(),
+                        DiaChiNhanHang: document.getElementById('selectXa')?.value || 'Không rõ'
+                    });
+                }
+            });
+
+            if (selected.length === 0) {
+                alert("Bạn chưa chọn sản phẩm nào!");
+                return;
+            }
+
+            // Gửi dữ liệu về Controller
+            fetch('/Home/LishSuMuaHnag', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(selected)
+            })
+                .then(res => {
+                    if (res.ok) {
+                        alert("Đặt hàng thành công!");
+                        window.location.reload();
+                    } else {
+                        alert("Lỗi khi đặt hàng!");
+                    }
+                })
+                .catch(err => {
+                    console.error("Lỗi mạng:", err);
+                });
+        });
+    }
+    xuLyDatHang();
+
+
+
+
     function showCustomMessage(message, isSuccess = true) {
         const messageBox = document.getElementById('custom-message-box');
         if (!messageBox) {
             console.error('Element with ID "custom-message-box" not found. Cannot display message.');
-            // Nếu không có box, fallback về console log
+            
             if (isSuccess) {
                 console.log(message);
             } else {
@@ -463,14 +545,14 @@ document.addEventListener('DOMContentLoaded', function () {
         messageBox.style.display = 'block';
         messageBox.className = isSuccess ? 'alert alert-success' : 'alert alert-danger';
 
-        // Ẩn thông báo sau 3 giây
+       
         setTimeout(() => {
             messageBox.style.display = 'none';
         }, 3000);
     }
 
 
-    function sendToCardSever(sp) { 
+    function sendToCardSever(sp) {
 
         fetch('/Home/ThongTinGioHang', {
             method: 'POST',
@@ -478,13 +560,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-               
+
                 TENSP: sp.TenSP,
-                IMG: sp.Img,     
+                IMG: sp.Img,
                 GIAGOC: sp.GiaGoc,
                 GIAHT: sp.GiaHT,
-                SOLUONG: 1, 
-                
+                SOLUONG: 1,
+
             })
         })
             .then(response => {
@@ -492,12 +574,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     showCustomMessage("Đã thêm sản phẩm vào giỏ hàng thành công!", true);
                 } else if (response.status === 401) {
                     showCustomMessage("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.", false);
-                    
-                     setTimeout(() => { window.location.href = '/Home/DangNhap'; }, 2000);
+
+                    setTimeout(() => { window.location.href = '/Home/DangNhap'; }, 2000);
                 } else {
                     showCustomMessage("Lỗi khi thêm sản phẩm vào giỏ hàng.", false);
                 }
-                return response.text(); /
+                return response.text(); 
             })
             .then(data => {
                 console.log('Server Response:', data); // In phản hồi từ server
@@ -507,4 +589,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 showCustomMessage("Có lỗi xảy ra: " + error.message, false);
             });
     }
+
+    function loadTinhVaXa() {
+        let tinhXaData = [];
+
+        fetch('/Home/GetTinhVaXa')
+            .then(response => response.json())
+            .then(data => {
+                tinhXaData = data;
+
+                const selectTinh = document.getElementById('selectTinh');
+                const selectXa = document.getElementById('selectXa');
+
+                // Đổ dữ liệu tỉnh vào selectTinh
+                data.forEach(tinh => {
+                    const option = document.createElement('option');
+                    option.value = tinh.Id;
+                    option.textContent = tinh.TenTinh;
+                    selectTinh.appendChild(option);
+                });
+
+                // Khi tỉnh thay đổi => load xã/phường
+                selectTinh.addEventListener('change', function () {
+                    const selectedId = parseInt(this.value);
+                    const selectedTinh = tinhXaData.find(t => t.Id === selectedId);
+
+                    // Xóa xã cũ
+                    selectXa.innerHTML = '<option value="">-- Chọn xã --</option>';
+
+                    if (selectedTinh && selectedTinh.XaPhuongs.length > 0) {
+                        selectedTinh.XaPhuongs.forEach(xa => {
+                            const option = document.createElement('option');
+                            option.value = xa.Id;
+                            option.textContent = xa.TenXaPhuong;
+                            selectXa.appendChild(option);
+                        });
+                    }
+                });
+            })
+            .catch(error => console.error('Lỗi khi lấy tỉnh/xã:', error));
+
+    }
+    loadTinhVaXa();
+
 }); 
