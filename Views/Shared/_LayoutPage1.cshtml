@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css?v=123" rel="stylesheet" />
+    <link href="~/Content/YourStyle.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark container rounded">
+        <a class="navbar-brand ms-2" href="#">HD-Electronic</a>
+
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="/Home/Index">Trang chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Home/Introduce">Giới thiệu</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Home/File">Hồ sơ</a></li>
+        </ul>
+
+        @if (Session["Email"] != null)
+        {
+            <form class="d-flex me-3">
+                <input type="search" class="form-control me-2 w-75" placeholder="Tìm kiếm sản phẩm..." />
+                <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+            <ul class="navbar-nav me-3">
+                <li class="nav-item">
+                    <a href="/Home/ThongTinGioHang" class="nav-link">
+                        <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
+                        <span class="text-white">Giỏ hàng</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <span class="nav-link text-white">Xin chào, @Session["Email"]</span>
+                </li>
+                <li class="nav-item">
+                    <a href="/Account/DangXuat" class="nav-link text-danger">Đăng xuất</a>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="/Home/DangNhap" class="nav-link">ĐĂNG NHẬP</a></li>
+                <li class="nav-item"><a href="/Home/DangKy" class="nav-link">ĐĂNG KÝ</a></li>
+            </ul>
+        }
+    </nav>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 mx-auto">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 bg-light-subtle border p-3 text-center">
+        <p>
+            © 2018. Công ty cổ phần Thế Giới Di Động. GPDKKD: 0303217354 do sở KH & ĐT TP.HCM cấp ngày 02/01/2007. GPMXH: 21/GP-BTTTT do Bộ Thông Tin và Truyền Thông cấp ngày 11/01/2021.
+            Địa chỉ: 128 Trần Quang Khải, P.Tân Định, Q.1, TP.Hồ Chí Minh. Địa chỉ liên hệ và gửi chứng từ: Lô T2-1.2, Đường D1, Đ. D1, P.Tân Phú, TP.Thủ Đức, TP.Hồ Chí Minh. Điện thoại: 028 38125960. Email: cskh@thegioididong.com. Chịu trách nhiệm nội dung: Huỳnh Văn Tốt. Email: hotrotmdt@thegioididong.com. Xem chính sách sử dụng
+        </p>    
+    </div>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

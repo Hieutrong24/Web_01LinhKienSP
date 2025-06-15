@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QL_LinhKienDienTuModelStoreContainer" CdmEntityContainer="QL_LinhKienDienTuEntities7">
+    <EntitySetMapping Name="ChiTietDanhMuc">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.ChiTietDanhMuc">
+        <MappingFragment StoreEntitySet="ChiTietDanhMuc">
+          <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
+          <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+          <ScalarProperty Name="TenChiTiet" ColumnName="TenChiTiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhMuc">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.DanhMuc">
+        <MappingFragment StoreEntitySet="DanhMuc">
+          <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+          <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GioHang">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.GioHang">
+        <MappingFragment StoreEntitySet="GioHang">
+          <ScalarProperty Name="EMAILTAIKHOAN" ColumnName="EMAILTAIKHOAN" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LishSuMuaHnag">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.LishSuMuaHnag">
+        <MappingFragment StoreEntitySet="LishSuMuaHnag">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="NGAYMUA" ColumnName="NGAYMUA" />
+          <ScalarProperty Name="ID_TTGIOHANG" ColumnName="ID_TTGIOHANG" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiSP">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.LoaiSP">
+        <MappingFragment StoreEntitySet="LoaiSP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHACUNGCAP">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.NHACUNGCAP">
+        <MappingFragment StoreEntitySet="NHACUNGCAP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENNHACUNGCAP" ColumnName="TENNHACUNGCAP" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPham">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIAGOC" ColumnName="GIAGOC" />
+          <ScalarProperty Name="GIAHT" ColumnName="GIAHT" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="IDLOAISP" ColumnName="IDLOAISP" />
+          <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoan">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="ID_TAIKHOAN_ADMIN" ColumnName="ID_TAIKHOAN_ADMIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoan_Admin">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.TaiKhoan_Admin">
+        <MappingFragment StoreEntitySet="TaiKhoan_Admin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tinh">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.Tinh">
+        <MappingFragment StoreEntitySet="Tinh">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENTINH" ColumnName="TENTINH" />
+          <ScalarProperty Name="QUOCGIA" ColumnName="QUOCGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTin_GioHang">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.ThongTin_GioHang">
+        <MappingFragment StoreEntitySet="ThongTin_GioHang">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIAGOC" ColumnName="GIAGOC" />
+          <ScalarProperty Name="GIAHT" ColumnName="GIAHT" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="IDGIOHANG" ColumnName="IDGIOHANG" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Thongtin_SP_Nhap">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.Thongtin_SP_Nhap">
+        <MappingFragment StoreEntitySet="Thongtin_SP_Nhap">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
+          <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
+          <ScalarProperty Name="IDNHACUNGCAP" ColumnName="IDNHACUNGCAP" />
+          <ScalarProperty Name="IDTAIKHOAN_ADMIN" ColumnName="IDTAIKHOAN_ADMIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Xa_Phuong">
+      <EntityTypeMapping TypeName="QL_LinhKienDienTuModel.Xa_Phuong">
+        <MappingFragment StoreEntitySet="Xa_Phuong">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENXA_PHUONG" ColumnName="TENXA_PHUONG" />
+          <ScalarProperty Name="ID_TINH" ColumnName="ID_TINH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
